@@ -1,0 +1,53 @@
+
+canvas {
+    border: 1px solid black;
+}
+div{
+    margin-bottom: 1em;
+    display:flex;
+}
+div.header{
+    border: 1px solid black;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+div.info{
+    flex-direction: column;
+    margin:auto;
+
+    justify-content: flex-start;
+}
+p{
+
+}
+p.logo{
+    font-size: 30px;
+    padding-right: 10px;
+}
+p.header{
+    font-size: 25px;
+}
+p.name, p.health, p.gold{
+
+}
+p.health{
+    color: red;
+}
+p.gold{
+    color:goldenrod;
+}
+p.middle{
+    flex-grow: 4;
+}
+span{
+    color:black;
+    flex-shrink: 2;
+}
+.settings{
+    padding: 0;
+    border: none;
+    background: none;
+    position: absolute;
+
+}
