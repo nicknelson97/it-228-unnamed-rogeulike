@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<?php
-        $pName = "Character Name";
-        $pMaxHealth = 10;
-        $pCurrentHealth = 10;
-        $mMaxHealth = 5;
-        $mCurrentHealth = 5;
-        $pGold = 1000;
-        
-    ?>
+<script>
+    var pName = "Player";
+    var pMHealth = 10;
+    var pCHealth = 10;
+    var pMinAttack = 1;
+    var pMaxAttack = 4;
+    var pDefense = 1;
+    var pMDefense = 0;
+    var pGold = 0;
+    var eKillCount = 0;
+</script>
+
 <html>
     <head>
         <Title>Game Title</Title>
         <link rel="stylesheet" href="styles.css" />
         <div class="header">
             <p class="logo">LOGO</p>
-            <p class="header">Game Name</p>
+            <p class="title">Game Name</p>
             <p class="middle" id="middle"></p>
             <div class="info">
-                <p class="name"><?php echo $pName; ?></p>
-                <p class="health">Health<span class="health">: <?php echo "".$pCurrentHealth."/".$pMaxHealth.""; ?></span></p>
-                <p class="gold">Gold<span class="health">: <?php echo $pGold; ?></span></p>
+                <p class="name" id="pName"></p>
+                <p class="health" id="pHealth"></p>
+                <p class="gold" id="pGold"></p>
             </div>
         </div>
     </head>
+    <script>
+        playerStats();
+        function playerStats() {
+            var pN = document.getElementById("pName");
+            var pH = document.getElementById("pHealth");
+            var pG = document.getElementById("pGold");
+            pN.innerHTML = pName;
+            pH.innerHTML = 'Health<span class="health">: </span>' + pCHealth + ' / ' + pMHealth;
+            pG.innerHTML = 'Gold<span class="health">: </span>' + pGold;
+
+        }
+    </script>
     <body>
     <canvas id="myCanvas"></canvas>
     
@@ -30,20 +45,28 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
         $(document).ready(function(){
             var w = window.innerWidth;
             var h = window.innerHeight;
 //            document.getElementById("middle").innerHTML = "Width: " + w + "<br>Height: " + h;
-            $("canvas").css("width", "" + 0.99 * w + "");
-            $("canvas").css("height", "" + 0.85 * h + "");
+            if(900 <= h){
+                $("canvas").attr("width", "" + 0.99 * w + "");
+                $("canvas").attr("height", "" + 0.85 * h + "");
+            }else{
+                $("canvas").attr("width", "" + 0.99 * w + "");
+                $("canvas").attr("height", "" + 0.8 * h + "");
+            } 
 //            $("canvas").css("image-rendering", "-moz-crisp-edges");
 //            $("canvas").css("image-rendering", "pixelated");
 //            $("canvas").css("image-rendering", "crisp-edges");
             
-            $("canvas").attr("width", "" + w + "");
-            $("canvas").attr("height", "" + h + "");
-            
-            $("div.header").css("height", "" + 0.1 * h + "");
+//            $("canvas").attr("width", "" + w + "");
+//            $("canvas").attr("height", "" + h + "");
+//            
+            $("div.header").css("height", "6em");
+            $("div.header").css("width", "" + 0.99 * w + "");
             $("div.info").css("height", "" + 0.15 * h + "");
             $("div.info").css("width", "" + 0.1 * w + "");
             
@@ -59,14 +82,16 @@
         $(document).ready(function(){
             var w = window.innerWidth;
             var h = window.innerHeight;
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+             
+             
             ctx.font = "" + 0.075 * w + "px Arial";
             ctx.textAlign= "center";
             ctx.fillText("Game Here", 0.5 * w, 0.5 * h);
         });
     </script>
-    <?php include('menu.php');?>
+    <?php 
+    include('menu.php');
+    ?>
     <script>
         drawPlayer();
         function drawPlayer() {
@@ -92,5 +117,9 @@
           img.src = 'images/goblin.png';
         }
     </script>
-    <?php include('actions.php');?>
+
+<?php
+    include('enemy.php');
+    include('actionWindow.php');
+?>
 </html>
