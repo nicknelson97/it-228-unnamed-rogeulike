@@ -78,6 +78,7 @@
             $("p.gold").css("margin-top", "" + 0.001 * h + "px");
         });
     </script>
+<!--
     <script>
         $(document).ready(function(){
             var w = window.innerWidth;
@@ -89,6 +90,7 @@
             ctx.fillText("Game Here", 0.5 * w, 0.5 * h);
         });
     </script>
+-->
     <?php 
     include('menu.php');
     ?>
