@@ -15,7 +15,6 @@ div.header{
 div.info{
     flex-direction: column;
     margin:auto;
-
     justify-content: flex-start;
 }
 p{
@@ -40,6 +39,9 @@ p.gold{
 p.middle{
     flex-grow: 4;
 }
+p.title{
+    font-size: 22px;
+}
 span{
     color:black;
     flex-shrink: 2;
@@ -50,4 +52,14 @@ span{
     background: none;
     position: absolute;
 
+}
+.invisButton{
+    padding: 0;
+    border: none;
+    background: none;
+    position: absolute;
+}
+.visButton{
+    padding: 0;
+    position: absolute;
 }
