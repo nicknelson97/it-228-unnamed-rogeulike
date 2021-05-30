@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <script>
     var pName = "Player";
-    var pMHealth = 10;
-    var pCHealth = 10;
+    var pMHealth = 26;
+    var pCHealth = 26;
     var pMinAttack = 1;
     var pMaxAttack = 4;
     var pDefense = 1;
@@ -25,6 +25,8 @@
                 <p class="gold" id="pGold"></p>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
     </head>
     <script>
         playerStats();
@@ -43,7 +45,7 @@
     
     </body>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script>
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
@@ -106,22 +108,10 @@
           };
           img.src = 'images/player.png';
         }
-        
-        drawGoblin();
-        function drawGoblin() {
-          var ctx = document.getElementById('myCanvas').getContext('2d');
-          var img = new Image();
-            
-          img.onload = function() {
-            ctx.imageSmoothingEnabled = false;
-            ctx.drawImage(img, 930, 150, img.width * 20, img.height * 20);
-          };
-          img.src = 'images/goblin.png';
-        }
     </script>
 
 <?php
-    include('enemy.php');
     include('actionWindow.php');
+    include('enemy.php');
 ?>
 </html>

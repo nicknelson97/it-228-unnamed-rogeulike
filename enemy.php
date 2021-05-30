@@ -1,77 +1,36 @@
+<?php 
+    include('enemies/goblin.php');
+    include('enemies/bandit.php');
+    include('enemies/spider.php');
+    include('enemies/knight.php');
+?>
 <script>
-    var eName = "Goblin";
-    var eMHealth = 10;
-    var eCHealth = 10;
-    var eMinAttack = 1;
-    var eMaxAttack = 4;
+    var eName = "";
+    var eMHealth = 0;
+    var eCHealth = 0;
+    var eMinAttack = 0;
+    var eMaxAttack = 0;
     var eDefense = 0;
     var eMDefense = 0;
-</script>
-<script>
-    $(document).ready(function(){//action window
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+    
+    var enemySelect;
+    randoEnemy();
+    
+    function randoEnemy() {
+        var x = Math.floor(Math.random() * 4 + 1);
+        enemySelect = x;
+        if(enemySelect == 1){
+            goblin();
+        }
+        else if(enemySelect == 2){
+            bandit();
+        }
+        else if(enemySelect == 3){
+            spider();
+        }
+        else if(enemySelect == 4){
+            knight();
+        }
+    }
 
-            ctx.beginPath();
-            ctx.rect(948, 500, 300, 180);
-            ctx.stroke();
-        });
-
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
-            ctx.font = "41px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText(eName, 1095, 545);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
-            ctx.font = "34px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText("Health", 1022, 583);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = (1920 + window.innerWidth)/2;
-            var h = (947 + window.innerHeight)/2;
-             
-             
-            ctx.font = "34px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText("Attack", 1172, 583);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
-            ctx.font = "30px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText(eCHealth + " / " + eMHealth, 1021, 627);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
-            ctx.font = "30px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText(eMinAttack + " - " + eMaxAttack, 1170, 627);
-        });
 </script>

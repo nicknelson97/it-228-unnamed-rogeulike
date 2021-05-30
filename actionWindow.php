@@ -102,8 +102,9 @@
 <script>
     function pAttack(){
          
-         
+        var gold;
         var pH = document.getElementById("pHealth");
+        var pG = document.getElementById("pGold");
         var eHit = Math.floor(Math.random() * pMaxAttack) + pMinAttack;
             eHit = eHit - eDefense;
             ctx.fillStyle = 'white'; //Changes enemy health
@@ -156,6 +157,10 @@
                 ctx.font = "24px Arial";
                 ctx.textAlign= "center";
                 ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+            
+            goldDrop();
+                pG.innerHTML = 'Gold<span class="health">: </span>' + pGold;
+            
         }
         else if(eCHealth > 0 && pCHealth <= 0){ // if player is dead and enemy is not
             ctx.fillStyle = 'black';
@@ -192,17 +197,18 @@
         else {
             var noVarTest = 0;
         }
+        function goldDrop() {
+            var x = Math.floor(Math.random() * eMaxGold) + eMinGold;
+            gold = x;
+            pGold = pGold + gold;
+        }
     }
 </script>
 <script>
     function resetEnemy(){
+        randoEnemy();
+        
         eCHealth = eMHealth;
-        ctx.fillStyle = 'white'; //Changes enemy health
-        ctx.fillRect(970, 602, 100, 30);
-        ctx.fillStyle = 'black';
-        ctx.font = "30px Arial";
-        ctx.textAlign= "center";
-        ctx.fillText(eCHealth + " / " + eMHealth, 1021, 627);
         
         ctx.fillStyle = 'white'; //Wipe enemy damage message
             ctx.fillRect(143, 654, 400, 30);
@@ -222,15 +228,11 @@
     
     function resetState(){
         var pH = document.getElementById("pHealth");
+        var pG = document.getElementById("pGold");
+        randoEnemy();
          
          
         eCHealth = eMHealth;
-        ctx.fillStyle = 'white'; //Changes enemy health
-        ctx.fillRect(970, 602, 100, 30);
-        ctx.fillStyle = 'black';
-        ctx.font = "30px Arial";
-        ctx.textAlign= "center";
-        ctx.fillText(eCHealth + " / " + eMHealth, 1021, 627);
         
         pCHealth = pMHealth;
         ctx.fillStyle = 'white'; //Changes enemy health
@@ -240,6 +242,8 @@
         ctx.textAlign= "center";
         ctx.fillText(pCHealth + " / " + pMHealth, 290, 130);
         pH.innerHTML = 'Health<span class="health">: </span>' + pCHealth + ' / ' + pMHealth;
+        pGold = 0;
+        pG.innerHTML = 'Gold<span class="health">: </span>' + pGold;
         
         ctx.fillStyle = 'white'; //Wipe enemy damage message
             ctx.fillRect(143, 654, 400, 30);
