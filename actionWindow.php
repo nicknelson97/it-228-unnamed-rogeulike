@@ -1,110 +1,55 @@
 <?php
 ?>
 <script>
-    $(document).ready(function(){//action window
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+    function drawWindows(){
+            ctx.fillStyle = 'white';
+            ctx.fillRect(143, 502, 296, 121);
+            ctx.fillStyle = 'black';
             ctx.beginPath();
             ctx.rect(141, 500, 300, 125);
             ctx.stroke();
-        });
-    
-</script>
-<script>
-    $(document).ready(function(){//action window
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
-            ctx.font = "24px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
-            var aButton = document.getElementById('cDeath');
-            aButton.setAttribute("style", "left: 487px; top: 845px;");
-        });
-
-</script>
-<script>
-    $(document).ready(function(){//result window
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+   
+            ctx.fillStyle = 'white';
+            ctx.fillRect(143, 652, 496, 96);
+            ctx.fillStyle = 'black';
             ctx.beginPath();
             ctx.rect(141, 650, 500, 100);
             ctx.stroke();
-        });
-
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+            
+            ctx.fillStyle = 'black';
             ctx.font = "30px Arial";
             ctx.textAlign= "center";
             ctx.fillText(pCHealth + " / " + pMHealth, 290, 130);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+
             ctx.font = "40px Arial";
             ctx.textAlign= "center";
             ctx.fillText("Attack", 208, 545);
             var aButton = document.getElementById('pAttack');
             aButton.setAttribute("style", "left: 162px; top: 639px; height: 30px;");
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+
             ctx.font = "40px Arial";
             ctx.textAlign= "center";
             ctx.fillText("Defend", 368, 545);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = (1920 + window.innerWidth)/2;
-            var h = (947 + window.innerHeight)/2;
-             
-             
+
             ctx.font = "40px Arial";
             ctx.textAlign= "center";
-            ctx.fillText("???", 200, 600);
-        });
-</script>
-<script>
-        $(document).ready(function(){
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-             
-             
+            ctx.fillText("", 200, 600);
+
             ctx.font = "40px Arial";
             ctx.textAlign= "center";
-            ctx.fillText("???", 380, 600);
-        });
+            ctx.fillText("", 380, 600);
+        }
 </script>
 
 <input onclick="pAttack()" type="button" id="pAttack" name="pAttack" class="invisButton" value="                              ">
 
 <input onclick="" type="button" id="cDeath" name="cDeath" class="invisButton" value="">
 <script>
+    
     function pAttack(){
-         
-        var gold;
         var pH = document.getElementById("pHealth");
         var pG = document.getElementById("pGold");
+        var gold;
         var eHit = Math.floor(Math.random() * pMaxAttack) + pMinAttack;
             eHit = eHit - eDefense;
             ctx.fillStyle = 'white'; //Changes enemy health
@@ -151,12 +96,16 @@
             dButton.setAttribute("value", "  Yes  ");
             
             eKillCount = eKillCount + 1;
-                ctx.fillStyle = 'white'; //Changes kill count
-                ctx.fillRect(0, 0, 400, 30);
-                ctx.fillStyle = 'black';
-                ctx.font = "24px Arial";
-                ctx.textAlign= "center";
-                ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+                    var bImg = new Image();
+                    bImg.onload = function() {
+                    ctx.imageSmoothingEnabled = false;
+                    ctx.drawImage(bImg, 0, 0, 400, 31);
+                    ctx.fillStyle = 'black';
+                    ctx.font = "24px Arial";
+                    ctx.textAlign= "center";
+                    ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+                  };
+                    bImg.src = 'images/background/counterBack.png';
             
             goldDrop();
                 pG.innerHTML = 'Gold<span class="health">: </span>' + pGold;
@@ -187,12 +136,16 @@
             dButton.setAttribute("value", "  Yes  ");
             
             eKillCount = eKillCount + 1;
-                ctx.fillStyle = 'white'; //Changes kill count
-                ctx.fillRect(0, 0, 400, 30);
-                ctx.fillStyle = 'black';
-                ctx.font = "24px Arial";
-                ctx.textAlign= "center";
-                ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+                    var bImg = new Image();
+                    bImg.onload = function() {
+                    ctx.imageSmoothingEnabled = false;
+                    ctx.drawImage(bImg, 0, 0, 400, 31);
+                    ctx.fillStyle = 'black';
+                    ctx.font = "24px Arial";
+                    ctx.textAlign= "center";
+                    ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+                  };
+                    bImg.src = 'images/background/counterBack.png';
         }
         else {
             var noVarTest = 0;
@@ -202,6 +155,7 @@
             gold = x;
             pGold = pGold + gold;
         }
+        
     }
 </script>
 <script>
@@ -253,12 +207,16 @@
             ctx.fillRect(143, 716, 450, 30);  
         
         eKillCount = 0;
-            ctx.fillStyle = 'white'; //Changes kill count
-            ctx.fillRect(0, 0, 400, 30);
-            ctx.fillStyle = 'black';
-            ctx.font = "24px Arial";
-            ctx.textAlign= "center";
-            ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+                    var bImg = new Image();
+                    bImg.onload = function() {
+                    ctx.imageSmoothingEnabled = false;
+                    ctx.drawImage(bImg, 0, 0, 400, 31);
+                    ctx.fillStyle = 'black';
+                    ctx.font = "24px Arial";
+                    ctx.textAlign= "center";
+                    ctx.fillText("Enemies slain: " + eKillCount, 90, 20);
+                  };
+                    bImg.src = 'images/background/counterBack.png';
         
         var aButton = document.getElementById('pAttack');
         aButton.setAttribute("onclick", "pAttack()");

@@ -14,16 +14,16 @@ function spider() {
         function drawSpider() {
           var ctx = document.getElementById('myCanvas').getContext('2d');
           var img = new Image();
+            var bImg = new Image();
             
           img.onload = function() {
-            ctx.fillStyle = 'white'; //Changes enemy health
-            ctx.fillRect(930, 140, 420, 330);
             ctx.imageSmoothingEnabled = false;
-            ctx.drawImage(img, 930, 150, img.width * 20, img.height * 20);
+            ctx.drawImage(bImg, 840, 40, 550, 450);
+            ctx.drawImage(img, 847, 44, img.width * 7.8, img.height * 7.8);
           };
           img.src = 'images/spider.png';
-        }
-        $(document).ready(function(){
+            bImg.src = 'images/background/enemyBack.png';
+
             ctx.fillStyle = 'white';
             ctx.fillRect(950, 502, 296, 176);
             
@@ -52,7 +52,7 @@ function spider() {
             ctx.font = "30px Arial";
             ctx.textAlign= "center";
             ctx.fillText(eMinAttack + " - " + eMaxAttack, 1170, 627);
-    });
+    }
          
 }
 </script>
